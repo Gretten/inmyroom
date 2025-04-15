@@ -13,7 +13,7 @@ export const LayoutBlock: FC<LayoutBlockProps> = ({ id, image, content }) => {
 
   return (
     <div key={id} className={styles["layout-block"]} style={backgroundStyles}>
-      <p>{content}</p>
+      <p className={styles.content}>{content}</p>
     </div>
   );
 };
