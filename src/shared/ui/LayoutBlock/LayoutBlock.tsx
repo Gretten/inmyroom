@@ -1,5 +1,6 @@
 import { FC } from "react";
 import styles from "./layout-block.module.css";
+import { calculateBackground } from "./model/calculateBackground";
 
 interface LayoutBlockProps {
   id: string;
@@ -8,9 +9,10 @@ interface LayoutBlockProps {
 }
 
 export const LayoutBlock: FC<LayoutBlockProps> = ({ id, image, content }) => {
+  const backgroundStyles = calculateBackground(image);
+
   return (
-    <div key={id} className={styles.layoutBlock}>
-      {image && <img src={image} alt="Block" />}
+    <div key={id} className={styles["layout-block"]} style={backgroundStyles}>
       <p>{content}</p>
     </div>
   );
