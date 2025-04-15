@@ -8,6 +8,7 @@ import FavoriteIcon from "@shared/ui/icons/heart.svg?react";
 import ScrollTopIcon from "@shared/ui/icons/scroll-top.svg?react";
 import { useToggleTapBar } from "./model/useToggleTapBar";
 import { scrollToTop } from "@shared/utils/scrollTop";
+import { sharePage } from "@shared/utils/sharePage";
 
 export const TapBar: React.FC = () => {
   const [likes, setLikes] = React.useState(0);
@@ -20,23 +21,11 @@ export const TapBar: React.FC = () => {
     scrollToTop();
   };
 
-  const onShare = () => {
-    if (navigator.share) {
-      navigator
-        .share({
-          title: "Поделиться",
-          text: "Текст для общего доступа",
-          url: window.location.href,
-        })
-        .then(() => console.log("Успешно поделились"))
-        .catch((error) => console.error("Ошибка при обмене:", error));
-    } else {
-      console.log("API обмена недоступно в этом браузере.");
-    }
+  const onShare = async () => {
+    await sharePage();
   };
 
   const onComment = () => {
-    // Логика для комментариев
     console.log("Показать комментарии");
   };
 
@@ -49,7 +38,7 @@ export const TapBar: React.FC = () => {
   return (
     <div className={tapbarStyles}>
       <IconButton icon={<ScrollTopIcon />} onClick={() => onScrollTop()} />
-      <IconButton icon={<ShareIcon />} onClick={() => {}} />
+      <IconButton icon={<ShareIcon />} onClick={() => onShare()} />
       <IconButton icon={<CommentIcon />} onClick={() => {}} />
       <IconButton icon={<FavoriteIcon />} onClick={() => {}} />
     </div>
