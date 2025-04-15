@@ -6,11 +6,12 @@ import ShareIcon from "../../shared/ui/icons/share.svg?react";
 import CommentIcon from "@shared/ui/icons/comment.svg?react";
 import FavoriteIcon from "@shared/ui/icons/heart.svg?react";
 import ScrollTopIcon from "@shared/ui/icons/scroll-top.svg?react";
+import { useTapBarScrollBehavior } from "./model/useTapBarScrollBehavior";
 
 export const TapBar: React.FC = () => {
   const [likes, setLikes] = React.useState(0);
   const [comments, setComments] = React.useState(0);
-  //   const isHidden = useTapBarScrollBehavior();
+  useTapBarScrollBehavior();
 
   const tapbarStyles = `${styles.tapbar} ${false ? `${styles.hidden}` : ""}`;
 
