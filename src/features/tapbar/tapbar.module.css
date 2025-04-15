@@ -1,0 +1,15 @@
+.tapbar {
+  position: fixed;
+  bottom: 0;
+  height: 60px;
+  max-width: 480px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: #f8f8f8;
+  transition: transform 0.3s ease;
+}
+
+.tapbar.hidden {
+  transform: translateY(100%);
+}

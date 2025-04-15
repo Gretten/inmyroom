@@ -1,3 +1,4 @@
+import { TapBar } from "@features/tapbar";
 import { blocks } from "@shared/model/data";
 import { LayoutBlock } from "@shared/ui/LayoutBlock";
 
@@ -12,6 +13,7 @@ export const MainPage = () => {
           content={block.content}
         />
       ))}
+      <TapBar />
     </div>
   );
 };
