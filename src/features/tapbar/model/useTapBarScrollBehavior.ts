@@ -1,11 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
+import { useRAFCallback } from "@shared/utils/useRAFCallback";
 
 export const useTapBarScrollBehavior = () => {
-  const handleScroll = () => {};
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+  const onScroll = useRAFCallback(() => {
+    console.log("Scroll Y:", window.scrollY);
   });
+
+  useEffect(() => {
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [onScroll]);
 };
