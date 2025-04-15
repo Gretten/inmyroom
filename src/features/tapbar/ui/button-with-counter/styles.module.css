@@ -1,0 +1,8 @@
+.with-counter {
+  display: flex;
+  align-items: center;
+}
+
+.counter {
+  margin-bottom: 5px;
+}

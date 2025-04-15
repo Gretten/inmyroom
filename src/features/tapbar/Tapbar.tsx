@@ -4,11 +4,12 @@ import styles from "./tapbar.module.css";
 import { IconButton } from "./ui/icon-button";
 import ShareIcon from "../../shared/ui/icons/share.svg?react";
 import CommentIcon from "@shared/ui/icons/comment.svg?react";
-import FavoriteIcon from "@shared/ui/icons/heart.svg?react";
+import LikeIcon from "@shared/ui/icons/heart.svg?react";
 import ScrollTopIcon from "@shared/ui/icons/scroll-top.svg?react";
 import { useToggleTapBar } from "./model/useToggleTapBar";
 import { scrollToTop } from "@shared/utils/scrollTop";
 import { sharePage } from "@shared/utils/sharePage";
+import { ButtonWithCounter } from "./ui/button-with-counter";
 
 export const TapBar: React.FC = () => {
   const [likes, setLikes] = React.useState(0);
@@ -26,21 +27,23 @@ export const TapBar: React.FC = () => {
   };
 
   const onComment = () => {
-    console.log("Показать комментарии");
+    setComments((prevCount) => prevCount + 1);
   };
 
-  const onFavorite = () => {
-    // Логика для избранного
-
-    console.log("Добавить в избранное");
+  const onLike = () => {
+    setLikes((prevCount) => prevCount + 1);
   };
 
   return (
     <div className={tapbarStyles}>
-      <IconButton icon={<ScrollTopIcon />} onClick={() => onScrollTop()} />
-      <IconButton icon={<ShareIcon />} onClick={() => onShare()} />
-      <IconButton icon={<CommentIcon />} onClick={() => {}} />
-      <IconButton icon={<FavoriteIcon />} onClick={() => {}} />
+      <IconButton icon={<ScrollTopIcon />} onClick={onScrollTop} />
+      <IconButton icon={<ShareIcon />} onClick={onShare} />
+      <ButtonWithCounter
+        icon={<CommentIcon />}
+        onClick={onComment}
+        counter={comments}
+      />
+      <ButtonWithCounter icon={<LikeIcon />} onClick={onLike} counter={likes} />
     </div>
   );
 };
