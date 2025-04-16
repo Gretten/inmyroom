@@ -1,7 +1,7 @@
 export const blocks = [
   {
     id: "1",
-    image: "/background.png",
+    image: "/background.webp",
     content: "Одноэтажный дом с двумя спальнями в стиле эклектика",
   },
   {

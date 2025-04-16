@@ -21,8 +21,10 @@ export const useToggleTapBar = (threshold = 200, delay = 1000) => {
     const currentY = Math.round(window.scrollY);
     const isScrollDown = currentY > prevScrollYRef.current;
 
-    if (isScrollDown && currentY > prevScrollYRef.current + threshold) {
+    if (currentY > prevScrollYRef.current + threshold) {
       setIsHidden(true);
+      console.log(prevScrollYRef.current + threshold);
+
       prevScrollYRef.current = currentY;
     }
 
